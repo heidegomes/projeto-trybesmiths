@@ -4,7 +4,7 @@ import chaiHttp from 'chai-http';
 
 chai.use(chaiHttp);
 
-describe('POST /products', function () { 
+describe('POST /products', function () {
   beforeEach(function () { sinon.restore(); });
 
 });

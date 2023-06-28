@@ -1,1 +1,8 @@
-const { Router } = require('express');
+import { Router } from 'express';
+import productsController from '../controller/productsController';
+
+const productsRoute = Router();
+
+productsRoute.post('/products', productsController.create);
+
+export default productsRoute;
