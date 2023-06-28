@@ -1,4 +1,5 @@
-import ProductModel, { ProductInputtableTypes } from '../database/models/product.model';
+import ProductModel, { ProductInputtableTypes,
+  ProductSequelizeModel } from '../database/models/product.model';
 import { Product } from '../types/Product';
 
 async function create(
@@ -11,6 +12,13 @@ async function create(
   return newProduct.dataValues;
 }
 
+async function findAll(): Promise<ProductSequelizeModel[]> {
+  const result = await ProductModel.findAll();
+  // console.log('service', result);
+  return result;
+}
+
 export default {
   create,
+  findAll,
 };

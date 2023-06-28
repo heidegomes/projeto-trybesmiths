@@ -5,4 +5,4 @@ export type Product = {
   orderId?: number;
 };
 
-export type ProductResponse = Omit<Product, 'orderId'>;
+export type ProductResponse = [Product];

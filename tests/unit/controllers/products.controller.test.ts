@@ -18,7 +18,7 @@ describe('ProductsController', function () {
     sinon.restore();
   });
 
-  it('teste camada controller', async function () {
+  it('post /products controller', async function () {
 
     req.body = {
       "name": "Martelo de Thor",
@@ -38,6 +38,33 @@ describe('ProductsController', function () {
 
     expect(res.status).to.have.been.calledWith(201);
     expect(res.json).to.be.calledWithExactly(returnDB);
+  })
+
+  it('get /products controller', async function () {
+
+    const returnDB = [
+      {
+        "id": 1,
+        "name": "Pedra Filosofal",
+        "price": "20 gold",
+        "orderId": 5
+      },
+      {
+        "id": 2,
+        "name": "Lança do Destino",
+        "price": "100 diamond",
+        "orderId": 1
+      }
+    ]
+
+    const mockReturnDB = returnDB.map((e) => ProductModel.build(e));
+
+    sinon.stub(productsService, 'findAll').resolves(mockReturnDB);
+
+    const controllerResponse = await productsController.findAll(req, res);
+
+    expect(res.status).to.have.been.calledWith(200);
+    expect(res.json).to.be.calledWithExactly(mockReturnDB);
   })
 
 });
