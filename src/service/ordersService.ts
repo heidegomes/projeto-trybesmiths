@@ -1,5 +1,5 @@
 import OrderModel from '../database/models/order.model';
-import ProductModel from '../database/models/product.model';
+// import ProductModel from '../database/models/product.model';
 import { ListOrder } from '../types/Order';
 
 async function findAll(): Promise<ListOrder[]> {
@@ -15,7 +15,7 @@ async function findAll(): Promise<ListOrder[]> {
   //     },
   //   ],
   // });
-  console.info('####### service', result);
+  // console.info('####### service', result);
 
   const arrOrders = result.map((o) => ({
     id: o.dataValues.id,
