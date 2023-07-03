@@ -1,7 +1,7 @@
-import { Request, Response } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import productSchema from './joiSchema';
 
-const productValidation = (req: Request, res: Response, next: any) => {
+const productValidation = (req: Request, res: Response, next: NextFunction) => {
   const { name, price } = req.body;
   const { error } = productSchema.validate({ name, price });
   if (!error) {
