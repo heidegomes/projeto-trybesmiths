@@ -18,28 +18,28 @@ describe('OrdersController', function () {
     sinon.restore();
   });
 
-  // it('get /orders controller', async function () {
+  it('get /orders controller', async function () {
 
-  //   const returnDB = [
-  //     {
-  //       "id": 1,
-  //       "userId": 2,
-  //       "productIds": [1, 2]
-  //     },
-  //     {
-  //       "id": 2,
-  //       "userId": 1,
-  //       "productIds": [3, 4]
-  //     }
-  //   ]
+    const responseService = [
+      {
+        "id": 1,
+        "userId": 2,
+        "productIds": [1, 2]
+      },
+      {
+        "id": 2,
+        "userId": 1,
+        "productIds": [3, 4]
+      }
+    ]
 
-  //   const mockReturnDB = returnDB.map((e) => OrderModel.build(e));
+    // const mockReturnDB = returnDB.map((e) => OrderModel.build(e));
 
-  //   // sinon.stub(ordersService, 'findAll').resolves(mockReturnDB);
+    sinon.stub(ordersService, 'findAll').resolves(responseService);
 
-  //   const controllerResponse = await ordersController.findAll(req, res);
+    const controllerResponse = await ordersController.findAll(req, res);
 
-  //   expect(res.status).to.have.been.calledWith(200);
-  //   expect(res.json).to.be.calledWithExactly(mockReturnDB);
-  // })
+    expect(res.status).to.have.been.calledWith(200);
+    expect(res.json).to.be.calledWithExactly(responseService);
+  })
 });
